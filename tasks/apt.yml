@@ -1,0 +1,11 @@
+---
+
+
+- name: install rabbitmq apt repository
+  apt_repository: repo='{{ rabbitmq_repository }}' state=present
+
+- name: install rabbitmq apt key
+  apt_key: url='{{ rabbitmq_key_url }}' state=present
+
+- name: install rabbitmq package
+  apt: pkg='{{ rabbitmq_package }}' state=present update_cache=yes

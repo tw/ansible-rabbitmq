@@ -1,0 +1,24 @@
+---
+
+
+- name: add rabbitmq users
+  rabbitmq_user: user={{ item.username }}
+                 password={{ item.password }}
+                 tags={{ item.tags | join(',') }}
+                 vhost={{ item.vhost }}
+                 configure_priv=.*
+                 read_priv=.*
+                 write_priv=.*
+                 state=present
+  with_items: "{{ rabbitmq_users }}"
+
+- name: add rabbitmq plugins
+  rabbitmq_plugin: names="{{ rabbitmq_plugins | join(',') }}" state=enabled
+
+- name: set erlang cookie
+  copy: content="{{ rabbitmq_cookie }}" dest={{ rabbitmq_cookie_path }} owner=rabbitmq group=rabbitmq mode=0400
+  when: rabbitmq_cookie is defined
+
+- name: restart rabbitmq
+  shell: pkill -u rabbitmq || true
+  notify: restart rabbitmq

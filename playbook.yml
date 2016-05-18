@@ -1,0 +1,15 @@
+---
+# Playbook for testing with Vagrant
+
+- hosts: all
+  user: $user
+  sudo: yes
+
+  vars_files:
+    - defaults/main.yml
+
+  tasks:
+    - include: tasks/main.yml
+
+  handlers:
+    - include: handlers/main.yml

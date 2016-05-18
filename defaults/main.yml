@@ -1,0 +1,19 @@
+---
+
+
+rabbitmq_repository: 'deb http://www.rabbitmq.com/debian/ testing main'
+rabbitmq_key_url: 'https://www.rabbitmq.com/rabbitmq-signing-key-public.asc'
+rabbitmq_package: 'rabbitmq-server'
+
+rabbitmq_cookie: 'E41DFFAD6244'
+rabbitmq_cookie_path: '/var/lib/rabbitmq/.erlang.cookie'
+
+rabbitmq_plugins:
+  - rabbitmq_management
+
+rabbitmq_users:
+  - username: 'root'
+    password: 'toor'
+    vhost: '/'
+    tags:
+      - administrator
