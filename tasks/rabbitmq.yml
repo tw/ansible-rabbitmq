@@ -1,5 +1,7 @@
 ---
 
+- name: start app
+  shell: rabbitmqctl start_app
 
 - name: add rabbitmq users
   rabbitmq_user: user={{ item.username }}
