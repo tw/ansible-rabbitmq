@@ -22,3 +22,5 @@
 - name: restart rabbitmq
   shell: pkill -u rabbitmq || true
   notify: restart rabbitmq
+
+- meta: flush_handlers

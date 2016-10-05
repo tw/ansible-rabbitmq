@@ -2,11 +2,14 @@
 
 
 rabbitmq_repository: 'deb http://www.rabbitmq.com/debian/ testing main'
-rabbitmq_key_url: 'https://www.rabbitmq.com/rabbitmq-signing-key-public.asc'
+rabbitmq_key_url: 'https://www.rabbitmq.com/rabbitmq-release-signing-key.asc'
 rabbitmq_package: 'rabbitmq-server'
 
 rabbitmq_cookie: 'E41DFFAD6244'
 rabbitmq_cookie_path: '/var/lib/rabbitmq/.erlang.cookie'
+
+rabbitmq_cluster: true
+rabbitmq_cluster_master: 'rabbitmq-01'
 
 rabbitmq_plugins:
   - rabbitmq_management

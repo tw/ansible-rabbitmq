@@ -3,3 +3,5 @@
 
 - include: apt.yml
 - include: rabbitmq.yml
+- include: rabbitmq-clustering.yml
+  when: rabbitmq_cluster is defined and rabbitmq_cluster
