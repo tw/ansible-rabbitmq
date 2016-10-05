@@ -5,7 +5,7 @@
 
 - name: join cluster
   shell: rabbitmqctl join_cluster rabbit@{{ rabbitmq_cluster_master }}
-  when: rabbitmq_cluster_master is defined and rabbitmq_cluster_master != inventory_hostname
+  when: rabbitmq_cluster_master is defined and rabbitmq_cluster_master != ansible_hostname
 
 - name: start app
   shell: rabbitmqctl start_app
