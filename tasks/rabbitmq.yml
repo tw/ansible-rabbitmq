@@ -3,6 +3,12 @@
 - name: file limits
   pam_limits: domain=rabbitmq limit_type=hard limit_item=nofile value=65536
 
+- name: file limits
+  pam_limits: domain=rabbitmq limit_type=soft limit_item=nofile value=65536
+
+- name: enable limits file
+  lineinfile: name=/etc/pam.d/common-session regexp='pam_limits.so' line='session required pam_limits.so'
+
 - name: write to env
   lineinfile: dest=/etc/rabbitmq/rabbitmq-env.conf line="{{item}}" create=yes
   with_items: rabbitmq_env
