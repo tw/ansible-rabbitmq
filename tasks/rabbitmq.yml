@@ -1,5 +1,8 @@
 ---
 
+- name: file limits:
+  pam_limits: domain=rabbitmq limit_type=soft limit_item=nofile value=65536
+
 - name: write to env
   lineinfile: dest=/etc/rabbitmq/rabbitmq-env.conf line="{{item}}" create=yes
   with_items: rabbitmq_env
@@ -26,7 +29,7 @@
   copy: content="{{ rabbitmq_cookie }}" dest={{ rabbitmq_cookie_path }} owner=rabbitmq group=rabbitmq mode=0400
   when: rabbitmq_cookie is defined
 
-- name: restart rabbitmq
+- name: kill rabbitmq
   shell: pkill -u rabbitmq || true
   notify: restart rabbitmq
 
