@@ -1,7 +1,7 @@
 ---
 
 - name: file limits
-  pam_limits: domain=rabbitmq limit_type=soft limit_item=nofile value=65536
+  pam_limits: domain=rabbitmq limit_type=hard limit_item=nofile value=65536
 
 - name: write to env
   lineinfile: dest=/etc/rabbitmq/rabbitmq-env.conf line="{{item}}" create=yes
