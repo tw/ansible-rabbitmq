@@ -13,7 +13,10 @@
     - rabbitmq
 
 - name: enable limits file
-  lineinfile: name=/etc/pam.d/common-session line='session required pam_limits.so'
+  lineinfile: dest={{ item }} line='session required pam_limits.so'
+  with_items:
+    - /etc/pam.d/common-session
+    - /etc/pam.d/common-session-noninteractive
 
 - name: write to env
   lineinfile: dest=/etc/rabbitmq/rabbitmq-env.conf line="{{item}}" create=yes
