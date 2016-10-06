@@ -1,6 +1,6 @@
 ---
 
-- name: file limits:
+- name: file limits
   pam_limits: domain=rabbitmq limit_type=soft limit_item=nofile value=65536
 
 - name: write to env
