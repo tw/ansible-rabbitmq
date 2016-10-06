@@ -1,10 +1,16 @@
 ---
 
 - name: file limits
-  pam_limits: domain=rabbitmq limit_type=hard limit_item=nofile value=65536
+  pam_limits: domain={{ item }} limit_type=hard limit_item=nofile value=65536
+  with_items:
+    - root
+    - rabbitmq
 
 - name: file limits
-  pam_limits: domain=rabbitmq limit_type=soft limit_item=nofile value=65536
+  pam_limits: domain={{ item }} limit_type=soft limit_item=nofile value=65536
+  with_items:
+    - root
+    - rabbitmq
 
 - name: enable limits file
   lineinfile: name=/etc/pam.d/common-session regexp='pam_limits.so' line='session required pam_limits.so'
