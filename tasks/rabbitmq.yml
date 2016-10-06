@@ -1,7 +1,7 @@
 ---
 
 - name: write to env
-  lineinfile: dest=/etc/rabbitmq/rabbitmq-env.conf line={{item}} create=yes
+  lineinfile: dest=/etc/rabbitmq/rabbitmq-env.conf line="{{item}}" create=yes
   with_items: rabbitmq_env
   when: rabbitmq_env is defined
 
