@@ -1,5 +1,10 @@
 ---
 
+- name: write to env
+  lineinfile: dest=/etc/rabbitmq/rabbitmq-env.conf line={{item}}
+  with_items: rabbitmq_env
+  when: rabbitmq_env is defined
+
 - name: start app
   shell: rabbitmqctl start_app
 
